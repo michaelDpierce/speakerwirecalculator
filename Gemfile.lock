@@ -43,7 +43,11 @@ GEM
       addressable (~> 2.3, >= 2.3.5)
     hike (1.2.3)
     htmlentities (4.3.2)
+    httpclient (2.4.0)
     i18n (0.6.9)
+    impressionist (1.5.1)
+      httpclient (~> 2.2)
+      nokogiri (~> 1.5)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -141,6 +145,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass (~> 3.0.3.0)
   coffee-rails (= 4.0.1)
+  impressionist
   jquery-rails (= 3.0.4)
   link_thumbnailer
   newrelic_rpm
