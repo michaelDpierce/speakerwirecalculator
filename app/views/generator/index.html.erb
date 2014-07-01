@@ -1,71 +1,68 @@
-<h1> Speaker Wire Calculator </h1>
+<h1>Speaker Wire Calculator</h1>
 <br><br>
 
-
-<div ng-controller="calculator" ng-app id='width_fix'>
+<div ng-controller='calculator' ng-app id='width_fix'>
   <center>
     <div class="panel panel-default" style='width: 75%;'>
       <br>
-      <form novalidate class="css-form">
+      <form novalidate class='css-form'>
         Application
-        <select ng-model="indexId"
-                ng-options="quality.IndexId as quality.IndexName for quality in qualityIndex"
+        <select ng-model='indexId'
+                ng-options='quality.IndexId as quality.IndexName for quality in qualityIndex'
                 style='width: 125px;'>
         </select>
         Nominal Impedance (Ohm)
-        <input type="number" ng-model="ohms" placeholder="i.e. 4ohms"
+        <input type='number' ng-model='ohms' placeholder='i.e. 4ohms'
                style='width: 125px;'>
         Cable Run (feet)
-        <input type="number" ng-model="feet" placeholder="i.e. 20ft"
+        <input type='number' ng-model='feet' placeholder='i.e. 20ft'
                style='width: 125px;'>
       </form>
       <br>
     </div>
 
-    <button input type="button" class="btn btn-default" ng-click="calculateScore()">
-      Calculate Guage
+    <button input type='button' class='btn btn-default' ng-click='calculateScore()'>
+      Calculate Gauge
     </button>
 
     <br><br>
 
-    <div class="panel panel-default" style='width: 75%;'>
-      <div class="panel-body" style='text-align:left;'>
-        <div ng-show="isCalculated">
-        Based on the parameters you have entered the optimal gauge of speaker wire
-        or cable for the run between your receiver or amp and speaker or subwoofer
-        is <b> {{gauge}} </b>. Below I have listed some recomendations for cable:
-        </br></br>
+    <div class='panel panel-default' style='width: 75%;'>
+      <div class='panel-body' style='text-align:left;'>
+        <div ng-show='isCalculated'>
+        You need <b>{{gauge}}AWG speaker wire.</b> Below is a list of
+        recomendations based on your needs: </br>
         </div>
-        <div ng-hide="isCalculated">
+        <div ng-hide='isCalculated'>
           Please select an application for your project and enter the olms and
           run length for your run to calculate the correct optimal gauge.
         </div>
 
-        <div ng-if="gauge == 10">
+        <div ng-if='gauge == 10'>
         <b><%= @AWG10.title %></b></br>
         <%= link_to(@url_10 , @AWG10.description) %></br>
         <%= link_to(image_tag("#{@AWG10.images.first}", height: '150px;'), @URL_10) %></br>
         </div>
 
-        <div ng-if="gauge == 12">
+        <div ng-if='gauge == 12'>
         <b><%= @AWG12.title %></b></br>
         <%= link_to(@url_12 , @AWG12.description) %></br>
         <%= link_to(image_tag("#{@AWG12.images.first}", height: '150px;'), @URL_12) %></br>
         </div>
 
-        <div ng-if="gauge == 14">
+        <div ng-if='gauge == 14'>
         <b><%= @AWG14.title %></b></br>
         <%= link_to(@url_14 , @AWG14.description) %></br>
         <%= link_to(image_tag("#{@AWG14.images.first}", height: '150px;'), @URL_14) %></br>
         </div>
 
-        <div ng-if="gauge == 16">
+        <div ng-if='gauge == 16'>
         <b><%= @AWG16.title %></b></br>
         <%= link_to(@url_16 , @AWG16.description) %></br>
         <%= link_to(image_tag("#{@AWG16.images.first}", height: '150px;'), @URL_16) %></br>
         </div>
 
-        <div ng-if="gauge == 18">
+        <div ng-if='gauge == 18'>
         <b><%= @AWG18.title %></b></br>
         <%= link_to(@url_18 , @AWG18.description) %></br>
         <%= link_to(image_tag("#{@AWG18.images.first}", height: '150px;'), @URL_18) %></br>
@@ -74,9 +71,6 @@
     </div>
   </center>
 </div>
-
-
-
 
 <script>
   function calculator($scope) {
