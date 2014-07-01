@@ -2,7 +2,7 @@
 <br><br>
 
 <div id='main_description'>
-  <strong style='color: #80879D;'>
+  <strong>
     Speaker Wire Calculator is a web app designed to calculte the optimal
     gauge of speaker wire or cable needed to achieve a specific standard of
     quality given the following parameters: Application* , Nominal
@@ -35,32 +35,29 @@
   </strong>
 </div>
 
-<div ng-controller='calculator' ng-app id='width_fix'>
+<div ng-controller='calculator' ng-app>
   <center>
     <div class="panel panel-default" style='width: 75%;'>
       <br>
-      <form novalidate class='css-form'>
+      <form novalidate>
         <div class='row'>
           <div class='col-md-4 col-sm-12'>
-            Application
+            <strong>Application</strong>
             <select ng-model='indexId'
-                    ng-options='quality.IndexId as quality.IndexName for quality in qualityIndex'
-                    style='width: 150px;'>
+                    ng-options='quality.IndexId as quality.IndexName for quality in qualityIndex'>
             </select>
           </div>
           <div class='visible-xs'><br><br></div>
           <div class='col-md-4 col-sm-12'>
-            Ohms(Ω)
+            <strong>Ohms(Ω)</strong>
             <input type='number' min='1', step='1' pattern="\d+"
-                   ng-model='ohms' placeholder='i.e. 4ohms'
-                   style='width: 150px;'/>
+                   ng-model='ohms' placeholder='i.e. 4ohms' />
           </div>
           <div class='visible-xs'><br><br></div>
           <div class='col-md-4 col-sm-12'>
-            Distance(ft)
+            <strong>Distance(ft)</strong>
             <input type='number' min='1', step='1' pattern="\d+"
-                   ng-model='feet' placeholder='i.e. 20ft'
-                   style='width: 150px;'/>
+                   ng-model='feet' placeholder='i.e. 20ft' />
           </div>
         </div>
       </form>
@@ -80,39 +77,15 @@
         Below are some recomendations.</br></br>
         </div>
         <div ng-hide='isCalculated'>
-          Please select an application for your project and enter the olms and
-          run length for your run to calculate the correct optimal gauge.
+          <center>
+            <strong>
+              Please select an application for your project and enter the olms
+              and run length for your run to calculate the correct optimal
+              gauge.
+            </strong>
+          </center>
         </div>
-
-       <div ng-if='gauge == 10'>
-        <%= link_to(@url_10 , 'Wired Home SKRL-10-100 10 AWG OFC Speaker Wire 100 ft.') %></br>
-        <%= link_to(image_tag("/assets/wired_home.jpg", height: '150px;',
-                              alt: '10AWG Cable'), @URL_10) %></br>
-        </div>
-
-       <div ng-if='gauge == 12'>
-        <%= link_to(@url_12 , 'Wired Home SKRL-12-100 12 AWG OFC Speaker Wire 100 ft.') %></br>
-        <%= link_to(image_tag("/assets/wired_home.jpg", height: '150px;',
-                               alt: '12AWG Cable'), @URL_12) %></br>
-        </div>
-
-       <div ng-if='gauge == 14'>
-        <%= link_to(@url_14 , 'Wired Home SKRL-14-100 14 AWG OFC Speaker Wire 100 ft.') %></br>
-        <%= link_to(image_tag("/assets/wired_home.jpg", height: '150px;',
-                               alt: '14AWG Cable'), @URL_14) %></br>
-        </div>
-
-       <div ng-if='gauge == 16'>
-        <%= link_to(@url_16 , 'Wired Home SKRL-16-100 16 AWG OFC Speaker Wire 100 ft.') %></br>
-        <%= link_to(image_tag("/assets/wired_home.jpg", height: '150px;',
-                               alt: '15AWG Cable'), @URL_16) %></br>
-        </div>
-
-       <div ng-if='gauge == 18'>
-        <%= link_to(@url_18 , 'RCA AH18100SR 18 AWG Speaker Wire 100 ft.') %></br>
-        <%= link_to(image_tag("/assets/rca.jpg", height: '150px;',
-                               alt: '18AWG Cable'), @URL_18) %></br>
-        </div>
+        <%= render 'generator/links' %>
       </div>
     </div>
   </center>

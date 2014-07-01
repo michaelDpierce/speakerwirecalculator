@@ -1,0 +1,52 @@
+@import "bootstrap";
+
+/* universal */
+
+$brown: #AB6D2B;
+$lightgrey: #FBFBFB;
+$mediumgrey: #80879D;
+$green: #2AA9AB;
+$red: #AB2D2A;
+
+html {
+  overflow-y: scroll;
+  background-color: $lightgrey;
+}
+
+body {
+  padding-top: 0px;
+  background-color: $lightgrey;
+
+}
+
+#main_description {
+  width: 75%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* typography */
+
+h1, p, strong {
+  font-family: 'Baskerville';
+}
+
+h2, h3, h4, h5, h6, p, cite, strong {
+  color: $mediumgrey;
+}
+
+h1 {
+  text-align: center;
+  color: $brown;
+}
+
+a {
+  color: $green;
+}
+
+a:hover{
+  color: $red;
+}
+
+.btn-default { border-color: $green; background-color: $green; color: $lightgrey }
+
