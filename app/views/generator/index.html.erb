@@ -3,13 +3,13 @@
 
 <div id='main_description'>
   <strong style='color: #80879D;'>
-    Speaker Wire Gauge Calculator is a web app designed to calculte the optimal
+    Speaker Wire Calculator is a web app designed to calculte the optimal
     gauge of speaker wire or cable needed to achieve a specific standard of
     quality given the following parameters: Application* , Nominal
-    Impedance or OLMS(Ω) and the total distance of the run in feet.
+    Impedance or Ohms(Ω), and the total distance of the run in feet.
     <br><br>
-    *The application parameter is used to get your speakers wire resistance
-    to within a specific range of it's nominal impedance.
+    *The application parameter is used to calculate your speakers wire resistance
+    to be within a specific range of it's nominal impedance.
     <table class='table table-bordered'>
       <tr>
         <th>Application</th>
@@ -45,7 +45,7 @@
             Application
             <select ng-model='indexId'
                     ng-options='quality.IndexId as quality.IndexName for quality in qualityIndex'
-                    style='width: 125px;'>
+                    style='width: 150px;'>
             </select>
           </div>
           <div class='visible-xs'><br><br></div>
@@ -53,14 +53,14 @@
             Ohms(Ω)
             <input type='number' min='1', step='1' pattern="\d+"
                    ng-model='ohms' placeholder='i.e. 4ohms'
-                   style='width: 125px;'/>
+                   style='width: 150px;'/>
           </div>
           <div class='visible-xs'><br><br></div>
           <div class='col-md-4 col-sm-12'>
             Distance(ft)
             <input type='number' min='1', step='1' pattern="\d+"
                    ng-model='feet' placeholder='i.e. 20ft'
-                   style='width: 125px;'/>
+                   style='width: 150px;'/>
           </div>
         </div>
       </form>
