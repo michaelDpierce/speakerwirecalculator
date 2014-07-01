@@ -1,22 +1,68 @@
 <h1>Speaker Wire Calculator</h1>
 <br><br>
 
+<div id='main_description'>
+  <strong style='color: #80879D;'>
+    Speaker Wire Gauge Calculator is a web app designed to calculte the optimal
+    gauge of speaker wire or cable needed to achieve a specific standard of
+    quality given the following parameters: Application* , Nominal
+    Impedance or OLMS(Ω) and the total distance of the run in feet.
+    <br><br>
+    *The application parameter is used to get your speakers wire resistance
+    to within a specific range of it's nominal impedance.
+    <table class='table table-bordered'>
+      <tr>
+        <th>Application</th>
+        <th>% of Speakers Nominal Impedance</td>
+      </tr>
+      <tr>
+        <td>Audiophile</td>
+        <td>< 3%</td>
+      </tr>
+      <tr>
+        <td>Critical Listening</td>
+        <td>< 4.5%</td>
+      </tr>
+      <tr>
+        <td>Casual Listening</td>
+        <td>< 7.5%</td>
+      </tr>
+      <tr>
+        <td>Audio Distribution</td>
+        <td>< 9%</td>
+      </tr>
+    </table>
+  </strong>
+</div>
+
 <div ng-controller='calculator' ng-app id='width_fix'>
   <center>
     <div class="panel panel-default" style='width: 75%;'>
       <br>
       <form novalidate class='css-form'>
-        Application
-        <select ng-model='indexId'
-                ng-options='quality.IndexId as quality.IndexName for quality in qualityIndex'
-                style='width: 125px;'>
-        </select>
-        Nominal Impedance (Ohm)
-        <input type='number' ng-model='ohms' placeholder='i.e. 4ohms'
-               style='width: 125px;'>
-        Cable Run (feet)
-        <input type='number' ng-model='feet' placeholder='i.e. 20ft'
-               style='width: 125px;'>
+        <div class='row'>
+          <div class='col-md-4 col-sm-12'>
+            Application
+            <select ng-model='indexId'
+                    ng-options='quality.IndexId as quality.IndexName for quality in qualityIndex'
+                    style='width: 125px;'>
+            </select>
+          </div>
+          <div class='visible-xs'><br><br></div>
+          <div class='col-md-4 col-sm-12'>
+            Ohms(Ω)
+            <input type='number' min='1', step='1' pattern="\d+"
+                   ng-model='ohms' placeholder='i.e. 4ohms'
+                   style='width: 125px;'/>
+          </div>
+          <div class='visible-xs'><br><br></div>
+          <div class='col-md-4 col-sm-12'>
+            Distance(ft)
+            <input type='number' min='1', step='1' pattern="\d+"
+                   ng-model='feet' placeholder='i.e. 20ft'
+                   style='width: 125px;'/>
+          </div>
+        </div>
       </form>
       <br>
     </div>
@@ -30,42 +76,42 @@
     <div class='panel panel-default' style='width: 75%;'>
       <div class='panel-body' style='text-align:left;'>
         <div ng-show='isCalculated'>
-        You need <b>{{gauge}}AWG speaker wire.</b> Below is a list of
-        recomendations based on your needs: </br>
+        You need <b>{{gauge}}AWG speaker wire.</b>
+        Below are some recomendations.</br></br>
         </div>
         <div ng-hide='isCalculated'>
           Please select an application for your project and enter the olms and
           run length for your run to calculate the correct optimal gauge.
         </div>
 
-        <div ng-if='gauge == 10'>
-        <b><%= @AWG10.title %></b></br>
-        <%= link_to(@url_10 , @AWG10.description) %></br>
-        <%= link_to(image_tag("#{@AWG10.images.first}", height: '150px;'), @URL_10) %></br>
+       <div ng-if='gauge == 10'>
+        <%= link_to(@url_10 , 'Wired Home SKRL-10-100 10 AWG OFC Speaker Wire 100 ft.') %></br>
+        <%= link_to(image_tag("/assets/wired_home.jpg", height: '150px;',
+                              alt: '10AWG Cable'), @URL_10) %></br>
         </div>
 
-        <div ng-if='gauge == 12'>
-        <b><%= @AWG12.title %></b></br>
-        <%= link_to(@url_12 , @AWG12.description) %></br>
-        <%= link_to(image_tag("#{@AWG12.images.first}", height: '150px;'), @URL_12) %></br>
+       <div ng-if='gauge == 12'>
+        <%= link_to(@url_12 , 'Wired Home SKRL-12-100 12 AWG OFC Speaker Wire 100 ft.') %></br>
+        <%= link_to(image_tag("/assets/wired_home.jpg", height: '150px;',
+                               alt: '12AWG Cable'), @URL_12) %></br>
         </div>
 
-        <div ng-if='gauge == 14'>
-        <b><%= @AWG14.title %></b></br>
-        <%= link_to(@url_14 , @AWG14.description) %></br>
-        <%= link_to(image_tag("#{@AWG14.images.first}", height: '150px;'), @URL_14) %></br>
+       <div ng-if='gauge == 14'>
+        <%= link_to(@url_14 , 'Wired Home SKRL-14-100 14 AWG OFC Speaker Wire 100 ft.') %></br>
+        <%= link_to(image_tag("/assets/wired_home.jpg", height: '150px;',
+                               alt: '14AWG Cable'), @URL_14) %></br>
         </div>
 
-        <div ng-if='gauge == 16'>
-        <b><%= @AWG16.title %></b></br>
-        <%= link_to(@url_16 , @AWG16.description) %></br>
-        <%= link_to(image_tag("#{@AWG16.images.first}", height: '150px;'), @URL_16) %></br>
+       <div ng-if='gauge == 16'>
+        <%= link_to(@url_16 , 'Wired Home SKRL-16-100 16 AWG OFC Speaker Wire 100 ft.') %></br>
+        <%= link_to(image_tag("/assets/wired_home.jpg", height: '150px;',
+                               alt: '15AWG Cable'), @URL_16) %></br>
         </div>
 
-        <div ng-if='gauge == 18'>
-        <b><%= @AWG18.title %></b></br>
-        <%= link_to(@url_18 , @AWG18.description) %></br>
-        <%= link_to(image_tag("#{@AWG18.images.first}", height: '150px;'), @URL_18) %></br>
+       <div ng-if='gauge == 18'>
+        <%= link_to(@url_18 , 'RCA AH18100SR 18 AWG Speaker Wire 100 ft.') %></br>
+        <%= link_to(image_tag("/assets/rca.jpg", height: '150px;',
+                               alt: '18AWG Cable'), @URL_18) %></br>
         </div>
       </div>
     </div>
@@ -76,18 +122,18 @@
   function calculator($scope) {
     // Set Variables
     $scope.gauge = null;
-    $scope.feet = 0;
-    $scope.ohms = 0;
+    $scope.feet = null;
+    $scope.ohms = null;
     $scope.score = 0;
     $scope.indexId = 300;
     $scope.isCalculated = false;
 
     // Application
     $scope.qualityIndex = [
-        {IndexId : 100, IndexName : 'Audiophile' },
-        {IndexId : 200, IndexName : 'Critical Listening' },
-        {IndexId : 300, IndexName : 'Casual Listening' },
-        {IndexId : 400, IndexName : 'Audio Distribution' }
+        {IndexId : 50, IndexName : 'Audiophile' },
+        {IndexId : 100, IndexName : 'Critical Listening' },
+        {IndexId : 200, IndexName : 'Casual Listening' },
+        {IndexId : 300, IndexName : 'Audio Distribution' }
     ];
 
     // Calculate Score based on parameters
@@ -115,23 +161,4 @@
   };
 </script>
 
-<style>
-#width_fix {
-      width: 100%;
-      margin: 0 auto;
-}
-
-</style>
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-52447209-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-
+<%= render 'generator/google_analytics' %>

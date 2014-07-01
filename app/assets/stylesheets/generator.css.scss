@@ -72,9 +72,22 @@ P {
 }
 
 a {
-  color: #000099;
+  color: #80879D;
 }
 
 .form_label {
   color: #80879D;
 }
+
+#width_fix {
+      width: 100%;
+      margin: 0 auto;
+}
+
+#main_description {
+  width: 75%;
+  color: #80879D;
+  margin: 0 auto;
+  text-align: left;
+}
+
