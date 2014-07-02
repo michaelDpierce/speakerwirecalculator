@@ -15,8 +15,6 @@ gem 'turbolinks', '1.1.1'
 gem 'sass-rails', '~> 4.0.1'
 gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'newrelic_rpm'
-gem 'link_thumbnailer'
-gem 'impressionist'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false
