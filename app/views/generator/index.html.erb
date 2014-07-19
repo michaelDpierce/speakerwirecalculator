@@ -73,8 +73,18 @@
     <div class='panel panel-default' style='width: 75%;'>
       <div class='panel-body' style='text-align:left;'>
         <div ng-show='isCalculated'>
-        You need <b>{{gauge}}AWG speaker wire.</b>
-        Below are some recomendations.</br></br>
+          <center>
+            You need <b>{{gauge}}AWG speaker wire.</b>
+            Parts Express is my favorite online retailer for cable! Check it out below:</br></br>
+            <div class='hidden-xs'>
+              <a href="http://www.anrdoezrs.net/click-7592624-1457534" target="_top">
+              <img src="http://www.awltovhc.com/image-7592624-1457534" width="468" height="60" alt="Parts Express: Home Audio/Video Products" border="0"/></a>
+            </div>
+            <div class='visible-xs'>
+              <a href="http://www.kqzyfj.com/click-7592624-10486077" target="_top">
+              <img src="http://www.tqlkg.com/image-7592624-10486077" width="120" height="60" alt="Parts Express Logo" border="0"/></a>
+            </div>
+          </center>
         </div>
         <div ng-hide='isCalculated'>
           <center>
@@ -85,7 +95,6 @@
             </strong>
           </center>
         </div>
-        <%= render 'generator/links' %>
       </div>
     </div>
   </center>
