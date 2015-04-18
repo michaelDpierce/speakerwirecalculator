@@ -1,16 +1,18 @@
 <h1 class='left-align white-text header-text'>Speaker Wire Calculator</h1>
 <br><br>
 <div class='container'>
-  <div class='row'>
+  <div class='row' about="#awg_gauge_inputs">
     <div class='input-field col s4'>
       <lable class='white-text'>Ohms(Ω)</label>
       <input type='number' min='1', step='1' pattern='\d+'
-             ng-model='ohms' placeholder='Enter the ohms for your speakers' />
+             ng-model='ohms' placeholder='Enter the ohms for your speakers'
+             datatype='xsd:float' />
     </div>
     <div class='input-field col s4'>
       <lable class='white-text'>Distance(ft)</label>
       <input type='number' min='1', step='1' pattern='\d+'
-             ng-model='feet' placeholder='Enter the total distance needed' />
+             ng-model='feet' placeholder='Enter the total distance needed'
+             datatype='xsd:float' />
     </div>
     <div class='input-field col s4'>
       <span style='position:relative; top:10px;'>
@@ -20,7 +22,7 @@
       </span>
     </div>
   </div>
-  <strong about='#awg_gauge_data'>
+  <strong about='#awg_gauge_output'>
     <div class='left-align white-text' style='font-size:1500%'>
       <center ng-show='isCalculated' datatype='xsd:string'>
         {{gauge}}AWG
