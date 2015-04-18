@@ -13,6 +13,14 @@ body {
   padding-left: 5%;
 }
 
+@media print
+{
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
+
 /* label color */
  .input-field label {
    color: #0288D1;

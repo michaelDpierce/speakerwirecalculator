@@ -1,37 +1,51 @@
 <h1 class='left-align white-text header-text'>Speaker Wire Calculator</h1>
 <br><br>
 <div class='container'>
-  <div class='row' about="#awg_gauge_inputs">
-    <div class='input-field col s4'>
+  <div class='row no-print' about="#awg_gauge_inputs">
+    <div class='input-field col m4 s12'>
       <lable class='white-text'>Ohms(Ω)</label>
       <input type='number' min='1', step='1' pattern='\d+'
              ng-model='ohms' placeholder='Enter the ohms for your speakers'
              datatype='xsd:float' />
     </div>
-    <div class='input-field col s4'>
+    <div class='input-field col m4 s12'>
       <lable class='white-text'>Distance(ft)</label>
       <input type='number' min='1', step='1' pattern='\d+'
              ng-model='feet' placeholder='Enter the total distance needed'
              datatype='xsd:float' />
     </div>
-    <div class='input-field col s4'>
+    <div class='input-field col m4 s12'>
       <span style='position:relative; top:10px;'>
-        <a class='waves-effect waves-light btn-large white blue-text' ng-click='calculateScore()'>
+        <a class='waves-effect waves-light btn-large white blue-text'
+           ng-click='calculateScore()'
+           title='Calculate Speaker Wire Gauge'>
           <i class='mdi-image-flash-on left'></i>Calculate Gauge
         </a>
       </span>
     </div>
   </div>
   <strong about='#awg_gauge_output'>
-    <div class='left-align white-text' style='font-size:1500%'>
+    <div class='white-text'>
       <center ng-show='isCalculated' datatype='xsd:string'>
-        {{gauge}}AWG
+        <span class='hide-on-small-only' style='font-size:1500%;'>
+          {{gauge}}AWG
+        </span>
+        <span class='hide-on-med-and-up' style='font-size:500%;'>
+          {{gauge}}AWG
+        </span>
       </center>
-
     </div>
     <span class='white-text'>Please donate to keep this site up:
-      <a class='amber-text' hreflang='en' href='https://cash.me/$MichaelPierce'>https://cash.me/$MichaelPierce</a>.<br>
-      Created By: <a class='amber-text' href='https://plus.google.com/u/0/+MichaelPierce7203879691?rel=author'>Michael Pierce</a>
+      <a class='amber-text'
+         hreflang='en'
+         href='https://cash.me/$MichaelPierce'>
+        https://cash.me/$MichaelPierce
+      </a>
+      .<br> Created By:
+      <a class='amber-text'
+         href='https://plus.google.com/u/0/+MichaelPierce7203879691?rel=author'>
+        Michael Pierce
+      </a>
     </span>
   </strong>
 </div>
