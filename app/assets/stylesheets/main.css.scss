@@ -1,52 +1,42 @@
-@import "bootstrap";
-
-/* universal */
-
-$brown: #AB6D2B;
-$lightgrey: #FBFBFB;
-$mediumgrey: #80879D;
-$green: #2AA9AB;
-$red: #AB2D2A;
-
 html {
   overflow-y: scroll;
-  background-color: $lightgrey;
+  background-color: #0288D1;
 }
 
 body {
   padding-top: 0px;
-  background-color: $lightgrey;
+  background-color: #0288D1;
 
 }
 
-#main_description {
-  width: 75%;
-  margin: 0 auto;
-  text-align: left;
+.header-text {
+  padding-left: 5%;
 }
 
-/* typography */
-
-h1, p, strong {
-  font-family: 'Baskerville';
-}
-
-h2, h3, h4, h5, h6, p, cite, strong {
-  color: $mediumgrey;
-}
-
-h1 {
-  text-align: center;
-  color: $brown;
-}
-
-a {
-  color: $green;
-}
-
-a:hover{
-  color: $red;
-}
-
-.btn-default { border-color: $green; background-color: $green; color: $lightgrey }
-
+/* label color */
+ .input-field label {
+   color: #0288D1;
+ }
+ /* label focus color */
+ .input-field input[type=text]:focus + label {
+   color: #0288D1;
+ }
+ /* label underline focus color */
+ .input-field input[type=text]:focus {
+   border-bottom: 1px solid #0288D1;
+   box-shadow: 0 1px 0 0 #0288D1;
+ }
+ /* valid color */
+ .input-field input[type=text].valid {
+   border-bottom: 1px solid #0288D1;
+   box-shadow: 0 1px 0 0 #0288D1;
+ }
+ /* invalid color */
+ .input-field input[type=text].invalid {
+   border-bottom: 1px solid #0288D1;
+   box-shadow: 0 1px 0 0 #0288D1;
+ }
+ /* icon prefix focus color */
+ .input-field .prefix.active {
+   color: #0288D1;
+ }

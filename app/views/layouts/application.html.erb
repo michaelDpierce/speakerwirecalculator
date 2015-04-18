@@ -1,21 +1,79 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Speaker Wire Calculator</title>
-  <meta name='description' content='Calculate the optimal gauge of speaker wire
-                                    or cable needed to run between your
-                                    receiver and speaker or subwoofer.'>
-  <meta name='viewport' content='width=device-width,
-                                 initial-scale=1.0 user-scalable=no'>
-  <meta name="msvalidate.01" content="8D44564DAF7E2F0B30219254ECE0DDA9" />
-  <%= stylesheet_link_tag 'application',
-                          media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.8/angular.min.js'></script>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <%= yield %>
-  <%= render 'layouts/footer'%>
-</body>
+<html ng-controller='calculator' ng-app>
+  <head>
+    <title>Speaker Wire Calculator</title>
+    <meta name='viewport'
+          content='width=device-width, initial-scale=1.0 user-scalable=no'/>
+    <meta name='description'
+          content='Calculate the optimal gauge of speaker wire or cable needed to
+                   run between your receiver and speaker or subwoofer.'/>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css'>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= yield %>
+
+    <!-- Scripts -->
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js'></script>
+    <script>
+      $(document).ready(function() {
+        $('select').material_select();
+      });
+    </script>
+    <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.8/angular.min.js'></script>
+    <script>
+      function calculator($scope) {
+        // Set Variables
+        $scope.gauge = null;
+        $scope.feet = null;
+        $scope.ohms = null;
+        $scope.score = 0;
+        $scope.indexId = 50;
+        $scope.isCalculated = false;
+
+        // Application
+        $scope.qualityIndex = [
+            {IndexId : 50, IndexName : 'Audiophile' },
+            {IndexId : 100, IndexName : 'Critical Listening' },
+            {IndexId : 200, IndexName : 'Casual Listening' },
+            {IndexId : 300, IndexName : 'Audio Distribution' }
+        ];
+
+        // Calculate Score based on parameters
+        $scope.calculateScore = function() {
+          $scope.score = ( $scope.indexId * $scope.ohms ) / $scope.feet
+          $scope.isCalculated = true;
+          $scope.calculateGauge()
+        };
+
+        $scope.calculateGauge = function () {
+          if ($scope.score < 11) {
+            $scope.gauge = 10;
+          } else if ($scope.score >= 11 && $scope.score < 17) {
+            $scope.gauge = 12;
+          }  else if ($scope.score >= 17 && $scope.score < 25) {
+            $scope.gauge = 14;
+          } else if ($scope.score >= 25 && $scope.score < 37) {
+            $scope.gauge = 16;
+          } else if ($scope.score >=37) {
+            $scope.gauge = 18;
+          } else {
+            $scope.gauge = null;
+          }
+        };
+      };
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-52447209-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </body>
 </html>

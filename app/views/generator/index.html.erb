@@ -1,146 +1,34 @@
-<h1>Speaker Wire Calculator</h1>
+<h1 class='left-align white-text header-text'>Speaker Wire Calculator</h1>
 <br><br>
-
-<div id='main_description'>
+<div class='container'>
+  <div class='row'>
+    <div class='input-field col s4'>
+      <lable class='white-text'>Ohms(Ω)</label>
+      <input type='number' min='1', step='1' pattern='\d+'
+             ng-model='ohms' placeholder='Enter the ohms for your speakers' />
+    </div>
+    <div class='input-field col s4'>
+      <lable class='white-text'>Distance(ft)</label>
+      <input type='number' min='1', step='1' pattern='\d+'
+             ng-model='feet' placeholder='Enter the total distance needed' />
+    </div>
+    <div class='input-field col s4'>
+      <span style='position:relative; top:10px;'>
+        <a class='waves-effect waves-light btn-large white blue-text' ng-click='calculateScore()'>
+          <i class='mdi-image-flash-on left'></i>Calculate Gauge
+        </a>
+      </span>
+    </div>
+  </div>
   <strong>
-    Speaker Wire Calculator is a web app designed to calculate the optimal
-    gauge of speaker wire or cable needed to achieve a specific standard of
-    quality given the following parameters: Application* , Nominal
-    Impedance or Ohms(Ω), and the total distance of the run in feet.
-    <br><br>
-    *The application parameter is used to calculate your speakers wire resistance
-    to be within a specific range of it's nominal impedance.
-    <table class='table table-bordered'>
-      <tr>
-        <th>Application</th>
-        <th>% of Speakers Nominal Impedance</td>
-      </tr>
-      <tr>
-        <td>Audiophile</td>
-        <td>< 3%</td>
-      </tr>
-      <tr>
-        <td>Critical Listening</td>
-        <td>< 4.5%</td>
-      </tr>
-      <tr>
-        <td>Casual Listening</td>
-        <td>< 7.5%</td>
-      </tr>
-      <tr>
-        <td>Audio Distribution</td>
-        <td>< 9%</td>
-      </tr>
-    </table>
+    <div class='left-align white-text' style='font-size:1500%'>
+      <center ng-show='isCalculated'>
+        {{gauge}}AWG
+      </center>
+      
+    </div>
+    <span class='white-text'>Please donate to keep this site up:
+      <a class='amber-text' href='https://cash.me/$MichaelPierce'>https://cash.me/$MichaelPierce</a>.
+    </span>
   </strong>
 </div>
-
-<div ng-controller='calculator' ng-app>
-  <center>
-    <div class="panel panel-default" style='width: 75%;'>
-      <br>
-      <form novalidate>
-        <div class='row'>
-          <div class='col-md-4 col-sm-12'>
-            <strong>Application</strong>
-            <select ng-model='indexId'
-                    ng-options='quality.IndexId as quality.IndexName for quality in qualityIndex'>
-            </select>
-          </div>
-          <div class='visible-xs'><br><br></div>
-          <div class='col-md-4 col-sm-12'>
-            <strong>Ohms(Ω)</strong>
-            <input type='number' min='1', step='1' pattern="\d+"
-                   ng-model='ohms' placeholder='i.e. 4ohms' />
-          </div>
-          <div class='visible-xs'><br><br></div>
-          <div class='col-md-4 col-sm-12'>
-            <strong>Distance(ft)</strong>
-            <input type='number' min='1', step='1' pattern="\d+"
-                   ng-model='feet' placeholder='i.e. 20ft' />
-          </div>
-        </div>
-      </form>
-      <br>
-    </div>
-
-    <button input type='button' class='btn btn-default' ng-click='calculateScore()'>
-      Calculate Gauge
-    </button>
-
-    <br><br>
-
-    <div class='panel panel-default' style='width: 75%;'>
-      <div class='panel-body' style='text-align:left;'>
-        <div ng-show='isCalculated'>
-          <center>
-            You need <b>{{gauge}}AWG speaker wire.</b>
-            Parts Express is my favorite online retailer for cable! Check it out below:</br></br>
-            <div class='hidden-xs'>
-              <a href="http://www.anrdoezrs.net/click-7592624-1457534" target="_top">
-              <img src="large.jpg" width="468" height="60" alt="Parts Express: Home Audio/Video Products" border="0"/></a>
-            </div>
-            <div class='visible-xs'>
-              <a href="http://www.kqzyfj.com/click-7592624-10486077" target="_top">
-              <img src="/small.jpg" width="120" height="60" alt="Parts Express Logo" border="0"/></a>
-            </div>
-          </center>
-        </div>
-        <div ng-hide='isCalculated'>
-          <center>
-            <strong>
-              Please select an application for your project and enter the olms
-              and run length for your run to calculate the correct optimal
-              gauge.
-            </strong>
-          </center>
-        </div>
-      </div>
-    </div>
-  </center>
-</div>
-
-<script>
-  function calculator($scope) {
-    // Set Variables
-    $scope.gauge = null;
-    $scope.feet = null;
-    $scope.ohms = null;
-    $scope.score = 0;
-    $scope.indexId = 100;
-    $scope.isCalculated = false;
-
-    // Application
-    $scope.qualityIndex = [
-        {IndexId : 50, IndexName : 'Audiophile' },
-        {IndexId : 100, IndexName : 'Critical Listening' },
-        {IndexId : 200, IndexName : 'Casual Listening' },
-        {IndexId : 300, IndexName : 'Audio Distribution' }
-    ];
-
-    // Calculate Score based on parameters
-    $scope.calculateScore = function() {
-      $scope.score = ( $scope.indexId * $scope.ohms ) / $scope.feet
-      $scope.isCalculated = true;
-      $scope.calculateGauge()
-    };
-
-    $scope.calculateGauge = function () {
-      if ($scope.score < 11) {
-        $scope.gauge = 10;
-      } else if ($scope.score >= 11 && $scope.score < 17) {
-        $scope.gauge = 12;
-      }  else if ($scope.score >= 17 && $scope.score < 25) {
-        $scope.gauge = 14;
-      } else if ($scope.score >= 25 && $scope.score < 37) {
-        $scope.gauge = 16;
-      } else if ($scope.score >=37) {
-        $scope.gauge = 18;
-      } else {
-        $scope.gauge = null;
-      }
-    };
-  };
-</script>
-
-<%= render 'generator/google_analytics' %>
