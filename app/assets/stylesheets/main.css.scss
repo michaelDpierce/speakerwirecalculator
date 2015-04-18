@@ -15,36 +15,13 @@ body {
 
 @media print
 {
-    .no-print, .no-print *
+  .no-print, .no-print *
     {
         display: none !important;
     }
 }
 
-/* label color */
- .input-field label {
-   color: #0288D1;
- }
- /* label focus color */
- .input-field input[type=text]:focus + label {
-   color: #0288D1;
- }
- /* label underline focus color */
- .input-field input[type=text]:focus {
-   border-bottom: 1px solid #0288D1;
-   box-shadow: 0 1px 0 0 #0288D1;
- }
- /* valid color */
- .input-field input[type=text].valid {
-   border-bottom: 1px solid #0288D1;
-   box-shadow: 0 1px 0 0 #0288D1;
- }
- /* invalid color */
- .input-field input[type=text].invalid {
-   border-bottom: 1px solid #0288D1;
-   box-shadow: 0 1px 0 0 #0288D1;
- }
- /* icon prefix focus color */
- .input-field .prefix.active {
-   color: #0288D1;
- }
+input[type=number] {
+  background-color: transparent !important;
+  border-bottom: 1px solid white !important;
+}
